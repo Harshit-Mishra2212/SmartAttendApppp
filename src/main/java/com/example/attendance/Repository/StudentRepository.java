@@ -10,4 +10,6 @@ import java.util.List;
 @Controller
 public interface StudentRepository extends MongoRepository<Student, ObjectId> {
     List<Student> findByUsername(String username);
+
+    List<Student> getStudentByUsername(String username);
 }

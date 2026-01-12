@@ -4,3 +4,7 @@ spring:
   mongodb:
     database: attendance
     uri: mongodb+srv://garvroc9_db_user:garvsharma@cluster0.xweqsf8.mongodb.net/?appName=Cluster0
+
+  data:
+    mongodb:
+      auto-index-creation: true

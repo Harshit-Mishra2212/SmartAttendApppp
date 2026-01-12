@@ -66,6 +66,36 @@ public class StudentService {
             return new ResponseEntity<>(HttpStatusCode.valueOf(404));
         }
     }
-    //add subject to student class - student controller
-    // mark attendance
+    public ResponseEntity<?> greeting(@RequestBody Student student)
+    {
+        return new ResponseEntity<>("Hello" +student.getName(), HttpStatusCode.valueOf(200));
+    }
+    public List<Student> findbyUsername(String username)
+    {
+        return studentRepository.findByUsername(username);
+    }
+    
+    public boolean markAttendance(String username, String subject, Integer date)
+    {
+        List<Student> studentByUsername = studentRepository.getStudentByUsername(username);
+        if(!studentByUsername.isEmpty())
+        {
+            Map<String, List<Integer>> map=studentByUsername.getFirst().getAttendance();
+            return map.get(subject).add(date);
+        }
+        else
+            return false;
+    }
+    public boolean markAbsent(String username, String subject, Integer date)
+    {
+        List<Student> studentByUsername = studentRepository.getStudentByUsername(username);
+        if(!studentByUsername.isEmpty())
+        {
+            Map<String, List<Integer>> map=studentByUsername.getFirst().getAbsent();
+            return map.get(subject).add(date);
+        }
+        else
+            return false;
+    }
+
 }

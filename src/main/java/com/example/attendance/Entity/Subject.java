@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 public class Subject {
     @Id
-    private ObjectId id;
     private String name;
     private int noOfStudents;
     private Teacher[] teachers;
